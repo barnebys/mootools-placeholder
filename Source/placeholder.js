@@ -6,56 +6,53 @@ license: MIT-style
 
 authors:
 - Alexey Gromov
+- Arian Stolwijk
 
 requires:
 - core/1.2.4: '*'
 
-provides: none
+provides: [Element.MooPlaceholder,MooPlaceholder]
 
 ...
 */
- if (typeof(NS) == 'undefined') NS = {};
-$(window).addEvent('domready', function()
-{
-	if ('placeholder' in document.createElement('input')) return;
 
-	var color = '#aaa';
-
-	$$('input').each(function(el)
-	{
-		var text = el.getAttribute('placeholder');
-		var defaultColor = el.getStyle('color');
-
-		if (text)
-		{
-			el.setStyle('color', color);
-			el.value = text;
-
-			el.addEvent('focus', function()
-			{
-				if (el.value == '' || el.value == text)
-				{
-					el.setStyle('color', defaultColor);
-					el.value = '';
-				}
-			});
-			el.addEvent('blur', function()
-			{
-				if (el.value == '' || el.value == text)
-				{
-					el.setStyle('color', color);
-					el.value = text;
-				}
-			});
-			var f = el.getParents('form');
-			if (f.length)
-			{
-				f[0].addEvent('submit', function()
-				{
-					if (el.value == text)
-						el.value = '';
-				});
+Element.implement('MooPlaceholder',function(color){
+	if ('placeholder' in this) return;
+	
+	color = color ? color : '#aaa';
+	
+	var text = this.get('placeholder'), 
+		defaultColor = this.getStyle('color');
+	
+	this.setStyle('color', color)
+		.set('value',text)
+		.addEvents({
+		'focus': function(){
+			if (this.get('value') == '' || this.get('value') == text) {
+				this.setStyle('color', defaultColor);
+				this.set('value','');
 			}
-		}
+		}.bind(this),
+		
+		'blur': function(){
+			if (this.get('value') == '' || this.get('value') == text) {
+				this.setStyle('color', color);
+				this.set('value',text);
+			}
+		}.bind(this)
 	});
+	
+	var form = this.getParent('form');
+	if (form) {
+		form.addEvent('submit', function(){
+			if (this.get('value') == text) 
+				this.set('value','');
+		}.bind(this));
+	}
+	
 });
+
+var MooPlaceholder = function(color,selector){
+	selector = selector ? selector : 'input';
+	$$(selector).MooPlaceholder(color);
+};

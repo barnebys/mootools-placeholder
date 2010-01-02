@@ -10,7 +10,18 @@ How to use
 
 Just include placeholder.js or placehoder-min.js to your HTML:
 
+	#HTML
 	<script type="text/javascript" src="/js/placeholder-min.js"></script>
+	<form action="#">
+		<input type="text" name="field" placeholder="Placeholder Text" />
+	</form>
+
+And then initialize the MooPlaceholder
+
+	#JS
+	window.addEvent('domready',function(){
+		MooPlaceholder();
+	}
 
 Thanks to
 ---------
