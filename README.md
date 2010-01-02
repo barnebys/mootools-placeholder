@@ -23,6 +23,9 @@ And then initialize the MooPlaceholder
 		MooPlaceholder();
 	}
 
+### Demo ###
+[http://mooshell.net/cQhC2/](http://mooshell.net/cQhC2/)
+
 Thanks to
 ---------
 
