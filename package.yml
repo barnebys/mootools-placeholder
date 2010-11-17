@@ -2,5 +2,8 @@ name: MooTools-Placeholder
 author: phpinfo
 category: Native
 tags: [input, accessibility]
-demo: http://mooshell.net/cQhC2/
+demo: http://jsfiddle.net/Sqa4u/
 current: 0.3
+
+sources:
+  - "Source/placeholder.js"
