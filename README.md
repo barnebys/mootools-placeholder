@@ -3,7 +3,7 @@ MooTools-Placeholder
 
 This simple plugin provides HTML 5 placeholder attribute to all browsers.
 
-![Screenshot](http://github.com/phpinfo/MooTools-Placeholder/raw/master/screenshot.png)
+![Screenshot](https://github.com/arian/MooTools-Placeholder/blob/master/screenshot.png)
 
 How to use
 ----------
@@ -29,4 +29,4 @@ And then initialize the MooPlaceholder
 Thanks to
 ---------
 
-Thanks to Nikita Vasilyev for his genius solution: http://github.com/NV/placeholder.js
+Thanks to Nikita Vasilyev for his genius solution: https://github.com/NV/placeholder.js
