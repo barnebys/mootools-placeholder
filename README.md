@@ -3,7 +3,7 @@ MooTools-Placeholder
 
 This simple plugin provides HTML 5 placeholder attribute to all browsers.
 
-![Screenshot](https://github.com/arian/MooTools-Placeholder/blob/master/screenshot.png)
+![Screenshot](https://github.com/arian/MooTools-Placeholder/raw/master/screenshot.png)
 
 How to use
 ----------
