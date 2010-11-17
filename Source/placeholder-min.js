@@ -1,17 +1,21 @@
 /*
 ---
-description: Provides HTML 5 placeholder attribute to all browsers.
+
+name: MooPlaceholder
+
+description: This simple plugin provides HTML 5 placeholder attribute to all browsers.
 
 license: MIT-style
 
 authors:
 - Alexey Gromov
+- Arian Stolwijk
+- Phil Freo
 
-requires:
-- core/1.2.4: '*'
-
-provides: none
+requires: [Core/Element]
+provides: [Element.MooPlaceholder, MooPlaceholder]
 
 ...
 */
-if(typeof NS=="undefined")NS={}; $(window).addEvent("domready",function(){"placeholder"in document.createElement("input")||$$("input").each(function(a){var b=a.getAttribute("placeholder"),d=a.getStyle("color");if(b){a.setStyle("color","#aaa");a.value=b;a.addEvent("focus",function(){if(a.value==""||a.value==b){a.setStyle("color",d);a.value=""}});a.addEvent("blur",function(){if(a.value==""||a.value==b){a.setStyle("color","#aaa");a.value=b}});var c=a.getParents("form");c.length&&c[0].addEvent("submit",function(){if(a.value==b)a.value= ""})}})});
+
+(function(){var b="placeholder";var a=function(){a=Function.from(b in document.createElement("input"));return a()};Element.implement("MooPlaceholder",function(c){var d=this,g;if(a()){return d}if(!c){c="#aaa"}var h=d.get(b),f=d.getStyle("color"),e=d.getParent("form");d.setStyle("color",c).set("value",h);d.addEvents({focus:function(){g=d.get("value");if(g==""||g==h){d.setStyle("color",f).set("value","")}},blur:function(){g=d.get("value");if(g==""||g==h){d.setStyle("color",c).set("value",h)}}});if(e){e.addEvent("submit",function(){if(d.get("value")==h){d.set("value","")}})}return d});this.MooPlaceholder=function(d,c){if(!c){c="input["+b+"],textarea["+b+"]"}$$(c).MooPlaceholder(d)}})();
